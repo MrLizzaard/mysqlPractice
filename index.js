@@ -1,11 +1,14 @@
+const express = require("express");
 const mysql = require("mysql");
+const { faker } = require("@faker-js/faker");
+const conn = require("./config");
 
-const conn = {
-  host: "localhost",
-  port: "3306",
-  user: "user",
-  password: "",
-  database: "opentutorials",
-};
+const connection = mysql.createConnection(conn);
 
-console.log("hello world");
+var q = "SELECT CURDATE() AS 'date'";
+connection.query(q, (err, res, fields) => {
+  if (err) throw err;
+  console.log(res[0].date.toString());
+});
+
+connection.end();

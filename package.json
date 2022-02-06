@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/MrLizzaard/mysqlPractice#readme",
   "dependencies": {
+    "@faker-js/faker": "^6.0.0-alpha.5",
     "express": "^4.17.2",
+    "faker": "^6.6.6",
     "mysql": "^2.18.1"
   }
 }
