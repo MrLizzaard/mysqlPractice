@@ -5,10 +5,15 @@ const conn = require("./config");
 
 const connection = mysql.createConnection(conn);
 
-var q = "SELECT CURDATE() AS 'date'";
-connection.query(q, (err, res, fields) => {
+const data = [];
+
+for (let i = 0; i < 500; i++) {
+  data.push([faker.internet.email(), faker.date.past()]);
+}
+
+connection.query("INSERT INTO users (email, created_at) VALUES ?", [data], (err, res) => {
   if (err) throw err;
-  console.log(res[0].date.toString());
+  console.log(res);
 });
 
 connection.end();
